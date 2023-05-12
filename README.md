@@ -23,3 +23,7 @@ https://nexus-mods.github.io/vortex-api/2022/04/03/Creating-a-game-extension.htm
 ### Notes
 
 - Initial barebones version support
+
+---
+
+Made by Mirage (M1RAG3)
