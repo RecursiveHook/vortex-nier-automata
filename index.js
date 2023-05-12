@@ -28,6 +28,7 @@ const spec = {
         details: {
             steamAppId: 524220,
             nexusPageId: "nierautomata",
+            stopPatterns: ["(^|/)data(/|$)"],
         },
         environment: {
             SteamAPPId: "524220",
@@ -190,36 +191,36 @@ function makeRequiresLauncher(api, gameSpec) {
         );
 }
 
-function testSupportedContent(files, gameId) {
-    // Make sure we're able to support this mod.
-    let supported =
-        gameId === GAME_ID && files.find((file) => path.extname(file).toLowerCase() === MOD_FILE_EXT) !== undefined;
+// function testSupportedContent(files, gameId) {
+//     // Make sure we're able to support this mod.
+//     let supported =
+//         gameId === GAME_ID && files.find((file) => path.extname(file).toLowerCase() === MOD_FILE_EXT) !== undefined;
 
-    return Promise.resolve({
-        supported,
-        requiredFiles: [],
-    });
-}
+//     return Promise.resolve({
+//         supported,
+//         requiredFiles: [],
+//     });
+// }
 
-function installContent(files) {
-    // The .pak file is expected to always be positioned in the mods directory we're going to disregard anything placed outside the root.
-    const modFile = files.find((file) => path.extname(file).toLowerCase() === MOD_FILE_EXT);
-    const idx = modFile.indexOf(path.basename(modFile));
-    const rootPath = path.dirname(modFile);
+// function installContent(files) {
+//     // The .pak file is expected to always be positioned in the mods directory we're going to disregard anything placed outside the root.
+//     const modFile = files.find((file) => path.extname(file).toLowerCase() === MOD_FILE_EXT);
+//     const idx = modFile.indexOf(path.basename(modFile));
+//     const rootPath = path.dirname(modFile);
 
-    // Remove directories and anything that isn't in the rootPath.
-    const filtered = files.filter((file) => file.indexOf(rootPath) !== -1 && !file.endsWith(path.sep));
+//     // Remove directories and anything that isn't in the rootPath.
+//     const filtered = files.filter((file) => file.indexOf(rootPath) !== -1 && !file.endsWith(path.sep));
 
-    const instructions = filtered.map((file) => {
-        return {
-            type: "copy",
-            source: file,
-            destination: path.join(file.substr(idx)),
-        };
-    });
+//     const instructions = filtered.map((file) => {
+//         return {
+//             type: "copy",
+//             source: file,
+//             destination: path.join(file.substr(idx)),
+//         };
+//     });
 
-    return Promise.resolve({ instructions });
-}
+//     return Promise.resolve({ instructions });
+// }
 
 /*
  * This function takes the game specification above and triggers the actual api calls
@@ -254,7 +255,7 @@ function applyGame(context, gameSpec) {
             { name: type.name }
         );
     });
-    context.registerInstaller("nierautomata-mod", 25, testSupportedContent, installContent);
+    // context.registerInstaller("nierautomata-mod", 25, testSupportedContent, installContent);
 }
 
 /*
