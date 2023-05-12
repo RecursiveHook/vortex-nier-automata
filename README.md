@@ -1,4 +1,6 @@
-## Vortex mod support for NieR Automata (Game of the YoRHa Edition)
+## Vortex mod support for NieR Automata 
+
+Vortex Extension for NieR:Automata (Game of the YoRHa Edition) on Steam.
 
 ### References
 
@@ -22,7 +24,7 @@ https://nexus-mods.github.io/vortex-api/2022/04/03/Creating-a-game-extension.htm
 
 ### Notes
 
-- Initial barebones version support
+- Initial version, support for basic mods, uses `\NieRAutomata` as the base folder and resolves paths based on `.\data\`.
 
 ---
 
