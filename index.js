@@ -24,7 +24,7 @@ const spec = {
         mergeMods: true,
         modPath: ".",
         modPathIsRelative: true,
-        requiredFiles: ["NieRAutomata.exe", "NieRAutomataCompat.exe", "data/data000.cpk"],
+        requiredFiles: ["NieRAutomata.exe", "data/data000.cpk"],
         details: {
             steamAppId: 524220,
             nexusPageId: "nierautomata",
